@@ -1,0 +1,8 @@
+---
+apt::always_apt_update: true
+apt::disable_keys: true
+
+corosync::enable_secauth: true
+corosync::authkey: "puppet:///modules/profiles/authkey"
+corosync::bind_address: "%{::cluster_ip}"
+corosync::multicast_address: "239.255.1.1"
