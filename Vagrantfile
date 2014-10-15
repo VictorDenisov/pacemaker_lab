@@ -24,6 +24,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			puppet.hiera_config_path = "hiera_node1.yaml"
 			puppet.facter = {
 				"cluster_ip" => CLUSTER_IP1,
+				"ip1" => CLUSTER_IP1,
+				"ip2" => CLUSTER_IP2,
+				"ip3" => CLUSTER_IP3,
 			}
 		end
 	end
@@ -40,6 +43,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			puppet.hiera_config_path = "hiera_node2.yaml"
 			puppet.facter = {
 				"cluster_ip" => CLUSTER_IP2,
+				"ip1" => CLUSTER_IP1,
+				"ip2" => CLUSTER_IP2,
+				"ip3" => CLUSTER_IP3,
 			}
 		end
 	end
@@ -56,6 +62,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			puppet.hiera_config_path = "hiera_node3.yaml"
 			puppet.facter = {
 				"cluster_ip" => CLUSTER_IP3,
+				"ip1" => CLUSTER_IP1,
+				"ip2" => CLUSTER_IP2,
+				"ip3" => CLUSTER_IP3,
 			}
 		end
 	end
