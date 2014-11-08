@@ -68,8 +68,9 @@ class profiles::ha_node {
 		enable => false,
 	}
 	service { 'pcsd':
-		ensure => running,
-		enable => true,
+		ensure  => running,
+		enable  => true,
+		require => [Package['pcs'], Package['pacemaker']],
 	}
 	user { 'hacluster':
 		ensure   => present,
