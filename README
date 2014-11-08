@@ -1,0 +1,9 @@
+This vagrant project prepares three nodes for running corosync cluster.
+
+It prepares cluster up to section 2.5.3
+
+You can continue execution of commands from the Cluster from the scratch guide starting from the section 2.5.3
+
+The nodes' names are node-1, node-2, node-3
+
+Ssh keys are installed on the nodes and allow passwordless access.
