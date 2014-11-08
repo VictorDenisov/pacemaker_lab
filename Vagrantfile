@@ -69,8 +69,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		end
 	end
 
-	config.vm.box = "ubuntu14.04-server-amd64"
-	config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+	#config.vm.box = "ubuntu14.04-server-amd64"
+	#config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+	config.vm.box = "fedora-20"
+	config.vm.box_url = "https://dl.dropboxusercontent.com/u/15733306/vagrant/fedora-20-netinst-2014_01_05-minimal-puppet-guestadditions.box"
 
 	config.vm.provider :virtualbox do |vb|
 		vb.customize ["modifyvm", :id, "--cpus", "1"]

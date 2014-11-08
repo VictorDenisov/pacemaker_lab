@@ -2,9 +2,9 @@ stage { 'first':
 	before => Stage['main'],
 }
 
-class { 'apt':
-	stage => first,
-}
+#class { 'apt':
+#stage => first,
+#}
 
 package { 'git':
 	ensure => present,
