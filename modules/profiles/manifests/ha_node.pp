@@ -6,6 +6,12 @@ class profiles::ha_node {
 	package { 'pacemaker':
 		ensure => present,
 	}
+	package { 'httpd':
+		ensure => present,
+	}
+	package { 'wget':
+		ensure => present,
+	}
 	package { 'pcs':
 		ensure => present,
 	}
@@ -23,6 +29,11 @@ class profiles::ha_node {
 		source => 'puppet:///modules/profiles/id_rsa',
 		owner  => 'vagrant',
 		group  => 'vagrant',
+	}
+	file { '/var/www/html/index.html':
+		ensure  => file,
+		content => '<html> <body>My Test Site - pcmk-  </body> <html>',
+		require => Package['httpd'],
 	}
 	file { '/home/vagrant/.ssh/id_rsa.pub':
 		ensure => file,

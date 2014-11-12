@@ -7,3 +7,5 @@ You can continue execution of commands from the Cluster from the scratch guide s
 The nodes' names are node-1, node-2, node-3
 
 Ssh keys are installed on the nodes and allow passwordless access.
+
+Httpd and wget are installed. index.html is prepopulated you just have to updated it with node numbers.
