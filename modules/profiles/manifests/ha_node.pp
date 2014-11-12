@@ -15,6 +15,12 @@ class profiles::ha_node {
 	package { 'pcs':
 		ensure => present,
 	}
+	package { 'drbd-pacemaker':
+		ensure => present,
+	}
+	package { 'drbd-udev':
+		ensure => present,
+	}
 	host { 'node-1':
 		ip => $::ip1,
 	}
