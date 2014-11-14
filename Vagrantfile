@@ -10,12 +10,19 @@ IP2 = "10.0.3.4"
 CLUSTER_IP2 = "192.168.100.4"
 IP3 = "10.0.3.5"
 CLUSTER_IP3 = "192.168.100.5"
+NODE1_ADDITIONAL_DISK = "node1_disk.vdi"
+NODE2_ADDITIONAL_DISK = "node2_disk.vdi"
+NODE3_ADDITIONAL_DISK = "node3_disk.vdi"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.define "node-1" do |node1|
 		node1.vm.network "private_network", ip: IP1
 		node1.vm.network "private_network", ip: CLUSTER_IP1
 		node1.vm.synced_folder ".", "/vagrant", nfs: true
+		config.vm.provider :virtualbox do |v|
+			v.customize ['createhd', '--filename', NODE1_ADDITIONAL_DISK, '--size', 1024]
+			v.customize ['storageattach', :id, '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', NODE1_ADDITIONAL_DISK]
+		end
 
 		node1.vm.provision "puppet" do |puppet|
 			puppet.module_path = "modules"
@@ -36,6 +43,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		node2.vm.network "private_network", ip: CLUSTER_IP2
 		node2.vm.synced_folder ".", "/vagrant", nfs: true
 
+		config.vm.provider :virtualbox do |v|
+			v.customize ['createhd', '--filename', NODE2_ADDITIONAL_DISK, '--size', 1024]
+			v.customize ['storageattach', :id, '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', NODE2_ADDITIONAL_DISK]
+		end
+
 		node2.vm.provision "puppet" do |puppet|
 			puppet.module_path = "modules"
 			puppet.manifests_path = "manifests"
@@ -54,6 +66,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		node3.vm.network "private_network", ip: IP3
 		node3.vm.network "private_network", ip: CLUSTER_IP3
 		node3.vm.synced_folder ".", "/vagrant", nfs: true
+
+		config.vm.provider :virtualbox do |v|
+			v.customize ['createhd', '--filename', NODE3_ADDITIONAL_DISK, '--size', 1024]
+			v.customize ['storageattach', :id, '--storagectl', 'SATA', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', NODE3_ADDITIONAL_DISK]
+		end
 
 		node3.vm.provision "puppet" do |puppet|
 			puppet.module_path = "modules"
