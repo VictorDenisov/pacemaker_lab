@@ -30,6 +30,12 @@ class profiles::ha_node {
 	host { 'node-3':
 		ip => $::ip3,
 	}
+	file { '/etc/drbd.conf':
+		ensure  => file,
+		content => template('profiles/drbd.conf.erb'),
+		owner   => 'root',
+		group   => 'root',
+	}
 	file { '/home/vagrant/.ssh/id_rsa':
 		ensure => file,
 		source => 'puppet:///modules/profiles/id_rsa',
