@@ -13,3 +13,7 @@ Httpd and wget are installed. index.html is prepopulated you just have to update
 DRDB packages are already installed.
 
 Instead of adding a logical volume we create /dev/sdb
+
+Install drbd on node 1 and 2 only.
+Before you configure drbd on every node run this:
+$ hostname node-<number>

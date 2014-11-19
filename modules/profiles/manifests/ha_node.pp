@@ -47,6 +47,12 @@ class profiles::ha_node {
 		content => '<html> <body>My Test Site - pcmk-  </body> <html>',
 		require => Package['httpd'],
 	}
+	file { '/etc/httpd/conf.d/server_status.conf':
+		ensure  => file,
+		source => 'puppet:///modules/profiles/server_status.conf',
+		require => Package['httpd'],
+	}
+
 	file { '/home/vagrant/.ssh/id_rsa.pub':
 		ensure => file,
 		source => 'puppet:///modules/profiles/id_rsa.pub',

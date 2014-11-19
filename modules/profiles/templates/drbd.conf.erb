@@ -1,0 +1,26 @@
+global {
+  usage-count yes;
+}
+
+common {
+  protocol C;
+}
+
+resource wwwdata {
+  meta-disk internal;
+  device /dev/drbd1;
+  syncer {
+    verify-alg sha1;
+  }
+  net {
+    allow-two-primaries;
+  }
+  on node-1 {
+    disk /dev/sdb;
+    address <%= @ip1 %>:7789;
+  }
+  on node-2 {
+    disk /dev/sdb;
+    address <%= @ip2 %>:7789;
+  }
+}
