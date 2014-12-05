@@ -21,6 +21,9 @@ class profiles::ha_node {
 	package { 'drbd-udev':
 		ensure => present,
 	}
+	package { 'psmisc':
+		ensure => present,
+	}
 	host { 'node-1':
 		ip => $::ip1,
 	}
