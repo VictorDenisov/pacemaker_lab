@@ -24,6 +24,15 @@ class profiles::ha_node {
 	package { 'psmisc':
 		ensure => present,
 	}
+	package { 'kernel-modules-extra':
+		ensure => present,
+	}
+	package { 'dlm':
+		ensure => present,
+	}
+	package { 'gfs2-utils':
+		ensure => present,
+	}
 	host { 'node-1':
 		ip => $::ip1,
 	}
