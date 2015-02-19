@@ -17,3 +17,11 @@ Instead of adding a logical volume we create /dev/sdb
 Install drbd on node 1 and 2 only.
 Before you configure drbd on every node run this:
 $ hostname node-<number>
+
+Read architecture overview: http://ceph.com/docs/master/architecture/
+
+Documents and references:
+
+http://ceph.com/docs/master/start/intro/
+http://docs.ceph.com/docs/master/glossary/
+
